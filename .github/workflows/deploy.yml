@@ -7,8 +7,6 @@ on:
             - main
 
 env:
-
-        secret-key: echo "${{ secrets.JWT_SECRET_KEY }}" secret.key
         consumer-key: ${{ secrets.CONSUMER_KEY }}
         devhub: ${{ secrets.DEVHUB_USERNAME }}
 
@@ -30,5 +28,5 @@ jobs:
                 sf --version
             #- name: Log into Salesforce
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=${{ env.secret-key }} --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
+            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
 
