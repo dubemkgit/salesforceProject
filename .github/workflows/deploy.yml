@@ -17,5 +17,5 @@ jobs:
             - name: Check out Repo
               uses: actions/checkout@v4
             - name: Download CLi and log in
-              uses: ./.github/actions/action.yml
+              uses: ./.github/actions
             - run: echo "$custom_action=custom_action_called"
