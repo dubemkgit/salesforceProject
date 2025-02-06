@@ -28,5 +28,5 @@ jobs:
                 sf --version
                 echo "$env.consumer-key"
             - name: Log into Salesforce
-              run: sf force:auth:jwt:grant --username dubemkutility@gmail.com --jwt-key-file D:\Salesforce\openssl\bin\server.key --client-id 3MVG9YFqzc_KnL.zOgPJ7SzigGxtj.edcfdwD1fawCtF7cJ_r_3XIvD_W5hhpMb574pFUK46qdJKlvYgESGKy --alias dubemk --set-default --instance-url https://login.salesforce.com
+              run: sf org login jwt --username $devhub --jwt-key-file $secret.key --client-id $consumer-key --alias dubemk --set-default --instance-url https://login.salesforce.com
 
