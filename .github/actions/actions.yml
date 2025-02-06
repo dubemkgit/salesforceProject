@@ -1,0 +1,15 @@
+name: CLi Dependencies and Login
+description: Download CLi and log into Salesforce DEV hub
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Salesforce Dependency
+              run: |
+                echo "Salesforce CLI installation"
+                npm install -g @salesforce/cli --global
+                sf --version
+            #- name: Log into Salesforce
+    - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
+    - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
+      shell: bash

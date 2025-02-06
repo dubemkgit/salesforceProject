@@ -21,14 +21,6 @@ jobs:
               run: echo "Salesforce Scratch Org"
             - name: Check out Repo
               uses: actions/checkout@v4
-
-            - name: Install Salesforce Dependency
-
-              run: |
-                echo "Salesforce CLI installation"
-                npm install -g @salesforce/cli --global
-                sf --version
-            #- name: Log into Salesforce
-            - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
-            
+            - name: Download CLi and log in
+              uses: ./.github/actions/actions.yml
+            - run: echo "$custom_action=custom_action_called"
