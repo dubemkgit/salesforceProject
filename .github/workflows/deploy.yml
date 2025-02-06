@@ -30,7 +30,7 @@ jobs:
                 path: ~/.npm
                 key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
             - name: Install Salesforce Dependency
-              if: ${{ steps.cache-salesforce-dep.outputs.cache-hit != 'true'}} 
+
               run: |
                 echo "Salesforce CLI installation"
                 npm install -g @salesforce/cli --global
