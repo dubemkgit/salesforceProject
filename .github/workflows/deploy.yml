@@ -1,13 +1,19 @@
-name: Salesforce
+name: Salesforce-Deployment
 description: Creating salesforce org
 
 on: 
     push:
         branches: 
             - main
+env:
+
+    secret-key: echo "${{ secrets.JWT_SECRET_KEY }}" >> secret.key
+    consumer-key: ${{ secrets.CONSUMER_KEY }}
+    devhub: ${{ secrets.DEVHUB_USERNAME }}
 
 jobs: 
     create-scratchOrg:
+        environment: PROD
         runs-on: ubuntu-latest
         steps:
             - name: Print out Salesforce
@@ -16,6 +22,8 @@ jobs:
               uses: actions/checkout@v4
             - name: Install Salesforce Dependency
               run: |
-                npm install -g @salesforce/cli 
+                echo "Salesforce CLI installation"
+                npm install -g @salesforce/cli --global
                 sf --version
+                echo "$env.secret-key"
 
