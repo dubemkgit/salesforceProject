@@ -28,5 +28,5 @@ jobs:
                 sf --version
                 echo "$env.consumer-key"
             - name: Log into Salesforce
-              run: sf org login jwt --username ${{ env.devhub }} --jwt-key-file ${{ env.secret-key }} --client-id ${{ env.consumer-key }} --alias dubemk --set-default --instance-url https://login.salesforce.com
+              run: sf org login jwt --username dubemkutility@gmail.com --jwt-key-file ${{ env.secret-key }} --client-id ${{ env.consumer-key }} --alias dubemk --set-default --instance-url https://login.salesforce.com
 
