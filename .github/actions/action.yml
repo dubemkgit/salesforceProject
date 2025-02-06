@@ -1,8 +1,5 @@
 name: CLi Dependencies and Login
 description: Download CLi and log into Salesforce DEV hub
-
-
-
 runs:
   using: 'composite'
   steps:
