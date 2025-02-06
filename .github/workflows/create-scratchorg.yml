@@ -1,0 +1,12 @@
+name: Salesforce
+description: Creating salesforce org
+
+on: 
+    push:
+        branches: 
+            - main
+
+jobs: 
+    create-scratchOrg:
+        runs-on: ubuntu-latest
+
