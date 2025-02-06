@@ -12,7 +12,7 @@ jobs:
         environment: PROD
         env:
 
-            secret-key: echo "${{ secrets.JWT_SECRET_KEY }}" >> secret.key
+            secret-key: echo "${{ secrets.JWT_SECRET_KEY }}"
             consumer-key: ${{ secrets.CONSUMER_KEY }}
             devhub: ${{ secrets.DEVHUB_USERNAME }}
         runs-on: ubuntu-latest
