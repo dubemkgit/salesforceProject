@@ -32,7 +32,8 @@ jobs:
               run: |
                 
                 mkdir -p salesforece-ouput
-
+                
+                echo "The File below is for account dubemkutility@gmail.com" >> salesforece-ouput/greetings.txt
                 sf org list >> salesforece-ouput/Org-list.txt
             
             - name: Upload Output
@@ -40,3 +41,8 @@ jobs:
               with: 
                 name: my-sf-query-artifact
                 path: salesforece-ouput/Org-list.txt
+            - name: Upload Output for Name
+              uses: actions/upload-artifact@v4
+              with: 
+                  name: my-greeting-artifact
+                  path: salesforece-ouput/greetings.txt
