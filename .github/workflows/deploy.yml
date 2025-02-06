@@ -30,11 +30,12 @@ jobs:
 
             - name: Generate files
               run: |
-                mkdir salesforece-ouput
+                mkdir -p salesforece-ouput
 
-                sf data query --query "SELECT Id, Name, Account.Name FROM Contact" >> salesforece-ouput.result.txt
+                sf data query --query "SELECT Id, Name, Account.Name FROM Contact" >> salesforece-ouput/result.txt
             
             - name: Upload Output
               uses: actions/upload-artifact@v4
               with: 
-                path: salesforece-ouput/
+                name: my-sf-query-artifact
+                path: salesforece-ouput/result.txt
