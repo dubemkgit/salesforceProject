@@ -30,13 +30,13 @@ jobs:
 
             - name: Generate files
               run: |
-                sf org list
+                
                 mkdir -p salesforece-ouput
 
-                sf data query --query "SELECT Id, Name, Account.Name FROM Contact" --target-org dubemk >> salesforece-ouput/result.txt
+                sf org list >> salesforece-ouput/Org-list.txt
             
             - name: Upload Output
               uses: actions/upload-artifact@v4
               with: 
                 name: my-sf-query-artifact
-                path: salesforece-ouput/result.txt
+                path: salesforece-ouput/Org-list.txt
