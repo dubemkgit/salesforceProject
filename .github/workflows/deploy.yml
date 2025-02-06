@@ -12,4 +12,10 @@ jobs:
         steps:
             - name: Print out Salesforce
               run: echo "Salesforce Scratch Org"
+            - name: Check out Repo
+              uses: actions/checkout@v4
+            - name: Install Salesforce Dependency
+              run: |
+                npm install -g @salesforce/cli 
+                sf --version
 
