@@ -4,7 +4,12 @@ description: Creating salesforce org
 on: 
     push:
         branches: 
-            - main        
+            - main
+
+env:
+                consumer-key: ${{ secrets.CONSUMER_KEY }}
+                devhub: ${{ secrets.DEVHUB_USERNAME }}
+        
 
 jobs: 
     create-scratchOrg:
@@ -17,5 +22,7 @@ jobs:
             - name: Check out Repo
               uses: actions/checkout@v4
             - name: Download CLi and log in
-              uses: ./.github/actions
-            - run: echo "$custom_action=custom_action_called"
+              uses: ./.github/actions/action.yml
+
+            - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
+            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub

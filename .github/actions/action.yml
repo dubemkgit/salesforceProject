@@ -2,8 +2,8 @@ name: CLi Dependencies and Login
 description: Download CLi and log into Salesforce DEV hub
 
 
-runs:
 
+runs:
   using: 'composite'
   steps:
     - name: Install Salesforce Dependency
@@ -13,7 +13,3 @@ runs:
                 sf --version
       shell: bash
             #- name: Log into Salesforce
-    - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-      shell: bash
-    - run: sf org login jwt --username=${{ secrets.SALESFORCE_USERNAME }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
-      shell: bash
