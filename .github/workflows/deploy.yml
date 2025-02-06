@@ -27,3 +27,14 @@ jobs:
                 cli-version: 'version'
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
             - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
+
+            - name: Generate files
+              run: |
+                mkdir salesforece-ouput
+
+                sf data query --query "SELECT Id, Name, Account.Name FROM Contact" >> salesforece-ouput.result.txt
+            
+            - name: Upload Output
+              uses: actions/upload-artifacts@v4
+              with: 
+                path: salesforece-ouput/
