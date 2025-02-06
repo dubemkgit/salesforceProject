@@ -21,6 +21,8 @@ jobs:
               run: echo "Salesforce Scratch Org"
             - name: Check out Repo
               uses: actions/checkout@v4
+            - name: Cache salesforce dependencies
+              uses: actions/cache@v4
             - name: Install Salesforce Dependency
               run: |
                 echo "Salesforce CLI installation"
@@ -28,5 +30,5 @@ jobs:
                 sf --version
             #- name: Log into Salesforce
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
+            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=${{ secrets.SECRET_JWT }}"  --client-id=${{ env.consumer-key }} --set-default-dev-hub
 
