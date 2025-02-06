@@ -9,7 +9,7 @@ on:
 
 jobs: 
     create-scratchOrg:
-       # environment: PROD
+        environment: PROD
         env:
 
             secret-key: ${{ secrets.JWT_SECRET_KEY }}
@@ -29,5 +29,5 @@ jobs:
                 echo "$env.consumer-key"
             #- name: Log into Salesforce
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-            - run: sf org login jwt --username=${{ secrets.SALESFORCE_USERNAME }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
+            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
 
