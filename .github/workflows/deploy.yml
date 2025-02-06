@@ -9,8 +9,8 @@ on:
 env:
         consumer-key: ${{ secrets.CONSUMER_KEY }}
         devhub: ${{ secrets.DEVHUB_USERNAME }}
-        #JWT_SECRET_KEYS: ${{ secrets.JWT_SECRET_KEY }}
-        
+
+
 jobs: 
     create-scratchOrg:
         environment: PROD
@@ -21,20 +21,14 @@ jobs:
               run: echo "Salesforce Scratch Org"
             - name: Check out Repo
               uses: actions/checkout@v4
-            - name: Cache salesforce dependencies
-              id: cache-salesforce-dep
-              uses: actions/cache@v4
-              env:
-                cache-name: cache-node-modules
-              with: 
-                path: ~/.npm
-                key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
             - name: Install Salesforce Dependency
+
               run: |
                 echo "Salesforce CLI installation"
                 npm install -g @salesforce/cli --global
                 sf --version
             #- name: Log into Salesforce
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
-            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file= secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
+            - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
             
