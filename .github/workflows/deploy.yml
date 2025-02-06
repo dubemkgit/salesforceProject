@@ -9,7 +9,7 @@ on:
 env:
         consumer-key: ${{ secrets.CONSUMER_KEY }}
         devhub: ${{ secrets.DEVHUB_USERNAME }}
-        JWT_SECRET_KEYS: ${{ env.JWT_SECRET_KEY }}
+        JWT_SECRET_KEYS: ${{ secrets.JWT_SECRET_KEY }}
         
 jobs: 
     create-scratchOrg:
