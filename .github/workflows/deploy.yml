@@ -9,7 +9,7 @@ on:
 
 jobs: 
     create-scratchOrg:
-        environment: PROD
+       # environment: PROD
         env:
 
             secret-key: ${{ secrets.JWT_SECRET_KEY }}
