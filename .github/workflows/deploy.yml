@@ -4,12 +4,7 @@ description: Creating salesforce org
 on: 
     push:
         branches: 
-            - main
-
-env:
-        consumer-key: ${{ secrets.CONSUMER_KEY }}
-        devhub: ${{ secrets.DEVHUB_USERNAME }}
-        
+            - main        
 
 jobs: 
     create-scratchOrg:
@@ -22,5 +17,5 @@ jobs:
             - name: Check out Repo
               uses: actions/checkout@v4
             - name: Download CLi and log in
-              uses: ./.github/actions
+              uses: ./.github/actions/action.yml
             - run: echo "$custom_action=custom_action_called"
