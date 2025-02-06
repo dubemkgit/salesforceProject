@@ -9,4 +9,7 @@ on:
 jobs: 
     create-scratchOrg:
         runs-on: ubuntu-latest
+        steps:
+            - name: Print out Salesforce
+              run: echo "Salesforce Scratch Org"
 
