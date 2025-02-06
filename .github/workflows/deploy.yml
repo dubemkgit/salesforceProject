@@ -23,6 +23,7 @@ jobs:
               uses: actions/checkout@v4
             - name: Download CLi and log in
               uses: ./.github/actions
-
+              with:
+                cli-version: '--version'
             - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
             - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub

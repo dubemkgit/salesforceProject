@@ -1,6 +1,12 @@
 name: CLi Dependencies and Login
 description: Download CLi and log into Salesforce DEV hub
 
+inputs:
+  cli-version:
+    description: 'Call the version'
+    required: false
+    default: 'Do not Check'
+
 
 
 runs:
@@ -10,6 +16,9 @@ runs:
       run: |
                 echo "Salesforce CLI installation"
                 npm install -g @salesforce/cli --global
-                sf --version
       shell: bash
-            #- name: Log into Salesforce
+    - name: Check verion of Salesforce
+      if: inputs.cli-version == '--version' 
+      run: sf --version
+      shell: bash
+
