@@ -25,5 +25,5 @@ jobs:
                 echo "Salesforce CLI installation"
                 npm install -g @salesforce/cli --global
                 sf --version
-                echo "$env.secret-key"
+                echo "$env.consumer-key"
 
