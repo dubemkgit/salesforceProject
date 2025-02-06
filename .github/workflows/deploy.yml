@@ -26,4 +26,6 @@ jobs:
                 npm install -g @salesforce/cli --global
                 sf --version
                 echo "$env.consumer-key"
+            - name: Log into Salesforce
+              run: sf org login jwt --username env.devhub --jwt-key-file $env.secret.key --client-id $env.consumer-key --alias dubemk --set-default --instance-url https://login.salesforce.com
 
