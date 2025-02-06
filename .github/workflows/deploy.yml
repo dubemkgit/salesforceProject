@@ -28,7 +28,7 @@ jobs:
                 sf --version
                 echo "$env.consumer-key"
             - name: Log into Salesforce
-              run: | 
-                echo "${{ secrets.SECRET_JWT }}"
+              run: |
+                echo "${{ secrets.SECRET_JWT }}" >> server.key                
                 sf org login jwt --username=${{ secrets.SALESFORCE_USERNAME }}   --jwt-key-file=secret.key  --client-id=${{ secrets.REPO_CONSUMER_SECRET }} --set-default-dev-hub
 
