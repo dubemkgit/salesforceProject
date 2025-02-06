@@ -5,15 +5,16 @@ on:
     push:
         branches: 
             - main
-env:
 
-    secret-key: echo "${{ secrets.JWT_SECRET_KEY }}" >> secret.key
-    consumer-key: ${{ secrets.CONSUMER_KEY }}
-    devhub: ${{ secrets.DEVHUB_USERNAME }}
 
 jobs: 
     create-scratchOrg:
         environment: PROD
+        env:
+
+            secret-key: echo "${{ secrets.JWT_SECRET_KEY }}" >> secret.key
+            consumer-key: ${{ secrets.CONSUMER_KEY }}
+            devhub: ${{ secrets.DEVHUB_USERNAME }}
         runs-on: ubuntu-latest
         steps:
             - name: Print out Salesforce
