@@ -9,7 +9,9 @@ runs:
                 echo "Salesforce CLI installation"
                 npm install -g @salesforce/cli --global
                 sf --version
+      shell: bash
             #- name: Log into Salesforce
     - run: echo "${{ secrets.SECRET_JWT }}" >> secret.key 
+      shell: bash
     - run: sf org login jwt --username=${{ env.devhub }}   --jwt-key-file=secret.key  --client-id=${{ env.consumer-key }} --set-default-dev-hub
       shell: bash
